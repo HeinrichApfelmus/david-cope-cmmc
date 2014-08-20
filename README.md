@@ -8,16 +8,20 @@ The original source code can be found here:
 
 It was originally intended to be run with [Macintosh Common LISP][mac-clisp].
 
-I have adjusted some things to make the code more compatible across platforms
+----
+
+I have performed some anti-bitrot maintenance and tried to make the code more compatible across platforms:
 
 * README files in plain .txt format.
 * Folder names have been changed to avoid the '/' and ' ' characters.
 
-In most folders, but not in `sorcerer-chapter-5`, I have adjusted more things that may have broken compatbility with Macintosh Common LISP:
+In all folders, except for `sorcerer-chapter-5`, I have also performed the following adjustments:
 
 * Line endings are LF.
 * Character encoding is UTF-8.
 * File names have been changed to add '.lisp' extension and avoid spaces.
+
+As far as I can tell, all these changes seem to be compatible with Macintosh Common LISP. (You may have to drag the `init.lisp` file onto the `RMCL` Application instead of opening it with the "Open" menu command.)
 
 
   [mac-clisp]: http://en.wikipedia.org/wiki/Macintosh_Common_Lisp
