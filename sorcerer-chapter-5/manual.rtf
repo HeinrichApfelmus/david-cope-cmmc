@@ -1,0 +1,68 @@
+{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fnil\fcharset77 Geneva;\f1\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh9000\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf0 \
+\
+\
+\
+Sorcerer \
+\
+\
+\
+\
+\
+Manual\
+\
+\
+May 1, 2003\
+\
+David Cope\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+\cf0 This manual covers all of the functions of the full-scale Sorcerer program available at 
+\f1 my Website at http://arts.ucsc.edu/faculty/cope under Software.
+\f0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 Loading\
+\
+To load Sorcerer be sure to place the Sorcerer Folder along side your MCL icon and then pull out the init.lisp file and place it in the the same folder as Sorcerer and MCL. then start the program by double clicking your MCL icon. \
+\
+Requirements\
+\
+Sorcerer requires a Power Macintosh (System X) with at least thirty-two Megabytes of RAM (sixty-four preferred) and a hard disk drive with at least sixteen Megabytes of free space. Sorcerer also requires QuickTime\'aa and QuickTime\'aa Musical Instrumentsr. Both QuickTime\'aa and QuickTime\'aa Musical Instruments are available from: http://www.apple.com. Sorcerer also requires Macintosh Common LISP 5.0 (available from Digitool.com - two different types of free temporary MCLs are available). Earlier versions of MCL cannot be used with Sorcerer. In order to begin Sorcerer, the Sorcerer folder and the init.lisp file must reside in the same folder as MCL 5.0 along with MCL's "library" and "examples" folders. MCL 5.0's memory should be set to at least 16 megabytes (in the memory choice in the get information window). \
+\
+Basics\
+\
+Sorcerer is analytical software designed to find as many of the possible sources of a target work in the works of its database as possible. To use Sorcerer, one must first choose music for a target and build a database. Choosing appropriate source music for a particular target work is critical to achieving useful results. If one wishes to argue for influence, source music should exist chronologically prior to the target work. Of course, one can reverse the chronology to see which works the target work might have influenced. Either way, further documentation linking source works to the composer of the target work is usually required to further verify allusions.\
+\
+The current availability of complete works in MIDI form on the Internet makes collecting and encoding music for target and source works easier than in years past when each note of a work had to be entered by hand. Works downloaded from the Internet, however, must be carefully proofread for mistakes since they often contain errors when compared to Urtext editions. Such errors will produce false references and hence false allusions if not corrected.\
+\
+Once works have been checked for errors they are automatically encoded as events or lists of pitches, timings, durations, dynamics, and channels. These lists may also be extended to include categories of other information such as articulations, effects, and so on, though these refinements seldom shed much light on the selection of allusional patterns.\
+\
+Sorcerer comes with simple data built in. New data may be loaded in one of two ways. Type 1 MIDI files only may be loaded. Lisp files must be of the form (setq "name of file" "data in the form of events") where "name of file" represents the name of the loaded file with no spaces or special characters beyond "-" and "_" and where data in the form of events" represents a list of notes with each note have five elements of the form ontime in thousands per second, pitch in half-steps with middle C being 60, duration in thousands per second, channel (1-16), and dynamic (0 127). (0 60 1000 1 127) represents just such an event with all numbers being integers. \
+\
+In this version of Sorcerer which works primarily with melody, only channel 1 will be loaded and matched. If MIDI files are loaded in which all the data occurs in channel 1, as is sometimes the case, then all of the data will be matched and cause confused output. The best way to work with MIDI files is to first load them into a notation program, check for mistakes, make sure the material you want matched only occurs in channel 1, and then save specifically as a type 1 MIDI file and then load it into Sorcerer.\
+\
+Pattern Matching Specifics \
+\
+In order to understand how patterns, particularly non-contiguous patterns, can be found requires a general understand of the basic principles of pattern matching. In order to make a favorable comparison between two patterns, a pattern matcher must:\
+\
+(a) compare intervals rather than notes;\
+\
+(b) allow for certain variations in interval size within logical boundaries;\
+\
+(c) allow the interpolation of a certain number of intervals between hierarchically more important notes.\
+\
+Users of Sorcerer provide a maximum length for patterns. This length should be quite long but not so long as to force the program to compare patterns that common sense would indicate have no chance of matching. Usually twelve or so intervals work best. Larger size maximum lengths will produce more internal matched patterns. The tradeoff, however, is that larger patterns require more user interpretation to distinguish which smaller pattern reflects the best possible reference.\
+\
+In an effort to ensure that patterns which straddle maximum pattern-lengthed segments don't get lost, Sorcerer uses an incremental pattern matcher. This means that patterns are collected beginning on each note of a composition rather than collected from the ends of previously-collected patterns. This incremental process greatly increases the potential of the program to discover important references because of its thoroughness. Occasionally the process also produces redundancy. \
+\
+The basic pattern matcher in Sorcerer deserves closer examination. At the lowest level, that closest to the music itself, matching consists of equating basic interval types. Major and minor seconds are treated as the same interval as are major and minor thirds, sixths, sevenths, and so on. Such matches demonstrate the tonal bias of the matcher as presently constituted. Sorcerer also recognizes pitch class equivalents. Therefore, a perfect fourth upwards equals a perfect fifth downwards, and so on. \
+\
+Sorcerer's pattern matcher has an accumulator which, given non-matching intervals, continues to track the current position of notes with respect to the last known correct match. This means that the figure Eb-Ab-Eb will be found in the pattern C-D-F-G-C by virtue of the fact that the originating fourth can be found in the notes C-F (intervening D) with the final fifth appearing as F-C with intervening G. This allows for themes to match regardless of whether they collate by note or just in overall shape. Sorcerer can accumulatively match either the target work or the source music. However, the program does not use the accumulator on both the target work and the source music simultaneously, since this can produce conflicts which require extensive user mediation and thus slows the pattern-matching process significantly.\
+\'ca\
+}
