@@ -1,0 +1,30 @@
+
+
+Improvise works in the following manner:
+
+(1) music provided from a performed source is grouped by each newly struck note
+(regardless of its duration) and all notes longer than the onset time
+of the new note are given ties;
+
+(2) these groupings are named according to their onset notes (N.B. this small program
+uses notes, not intervals, for recombination in order that readers may understand the 
+code more easily and hear the processes at work. This means, however, that the output, especially with little input, will be less creative. To increase creative potential, increase the size of the database);
+
+(3) these groupings have various slots that contain their timings, events, destination grouping names, and so on;
+
+(4) these groupings are stored in lexicons which have similar names and contain
+one or more like-named groupings for alternative selection;
+
+(5) composing involves selecting a grouping, finding its destination name, 
+looking up that destination's lexicon and then choosing an alternate (if
+one exists) grouping;
+
+(6) composing ceases when the program encounters a final (cadential) grouping;
+
+(7) the new series of groupings has its timings refigured based on the timings of 
+another work in the loaded databases;
+
+(8) the series is then re-timed in order to play in sequence;
+
+(9) I have provided several sample databases for experimentation, although users
+can load their own by selecting the MIDI option in the improvise window.
