@@ -174,7 +174,14 @@
 
 ;;;;;
 #|   Calling (GET-RULE 2 57 (57 60 69 76) (59 62 67 79) B206B-1) 
-   GET-RULE returned ((7 -2 3 B206B-1))|#
+   GET-RULE returned ((7 -2 3 B206B-1))
+
+apfelmus: The above comment seems to be wrong.
+Here is the result as returned by a Lisp interpreter:
+
+ > (GET-RULE 2 57 '(57 60 69 76) '(59 62 67 79) 'B206B-1) 
+   ((3 2 2 B206B-1) (12 2 -2 B206B-1) (7 2 3 B206B-1))
+|#
 ;;;;;
 
 (defun GET-RULE (voice start-note start-notes destination-notes name)
